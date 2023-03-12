@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\RESTful\ResourceController;
 use App\Models\ProdukModel;
 use App\Models\UsahaModel;
 use App\Models\UserModel;
 
-class Home extends BaseController
+class DashboardController extends ResourceController
 {
     public function index()
     {
@@ -17,6 +18,7 @@ class Home extends BaseController
         $data['user'] = $user->where('akses', 'mitra')->findAll();
         $data['usaha'] = $usaha->findAll();
         $data['produk'] = $produk->findAll();
+        $data['usahaa'] = count($data['usaha']);
 
         return view('dashboard/index', $data);
     }

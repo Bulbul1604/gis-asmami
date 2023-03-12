@@ -29,7 +29,59 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', function () {
+    return redirect()->to(site_url('login'));
+});
+
+$routes->group('', ['filter' => 'auth'], function ($routes) {
+    // Autentikasi
+    $routes->get('login', 'Autentikasi::login');
+    $routes->post('login/process', 'Autentikasi::loginVerif');
+    $routes->get('register', 'Autentikasi::register');
+    $routes->post('register/process', 'Autentikasi::registerVerif');
+});
+
+$routes->group('', ['filter' => 'usersAuth'], function ($routes) {
+    // Dashboard
+    $routes->get('home', 'DashboardController::index');
+
+    // Data Users
+    $routes->get('users', 'Users::index');
+    $routes->get('users/create', 'Users::create');
+    $routes->post('users/save', 'Users::save');
+    $routes->get('users/edit/(:segment)', 'Users::edit/$1');
+    $routes->post('users/update/(:segment)', 'Users::update/$1');
+    $routes->get('users/delete/(:segment)', 'Users::delete/$1');
+
+    // Data Usaha
+    $routes->get('usaha', 'UsahaController::index');
+    $routes->get('usaha/preview/(:segment)', 'UsahaController::preview/$1');
+    $routes->get('usaha/new', 'UsahaController::new');
+    $routes->post('usaha/create', 'UsahaController::create');
+    $routes->get('usaha/edit/(:segment)', 'UsahaController::edit/$1');
+    $routes->post('usaha/update/(:segment)', 'UsahaController::update/$1');
+    $routes->get('usaha/delete/(:segment)', 'UsahaController::delete/$1');
+
+    // Data Produk
+    $routes->get('produk', 'ProdukController::index');
+    $routes->get('produk/new', 'ProdukController::new', ['as' => 'produk_new']);
+    $routes->post('produk/create', 'ProdukController::create');
+    $routes->get('produk/edit/(:segment)', 'ProdukController::edit/$1');
+    $routes->post('produk/update/(:segment)', 'ProdukController::update/$1');
+    $routes->get('produk/delete/(:segment)', 'ProdukController::delete/$1');
+
+    $routes->get('logout', 'Autentikasi::logout');
+
+    // Equivalent to the following:
+    // $routes->get('photos/new', 'Photos::new');
+    // $routes->post('photos', 'Photos::create');
+    // $routes->get('photos', 'Photos::index');
+    // $routes->get('photos/(:segment)', 'Photos::show/$1');
+    // $routes->get('photos/(:segment)/edit', 'Photos::edit/$1');
+    // $routes->put('photos/(:segment)', 'Photos::update/$1');
+    // $routes->patch('photos/(:segment)', 'Photos::update/$1');
+    // $routes->delete('photos/(:segment)', 'Photos::delete/$1');
+});
 
 /*
  * --------------------------------------------------------------------
