@@ -17,7 +17,13 @@ class Produk extends BaseController
     }
     public function index()
     {
-        $data['produk'] = $this->produk->TampilProdukAllAdm();
+        if (session()->get('akses') == "mitra") {
+            $id = session()->get('usaha_id');
+            $data['produk'] = $this->produk->TampilProdukAllMitra($id);
+        }
+        if (session()->get('akses') == "admin" or session()->get('akses') == "pimpinan") {
+            $data['produk'] = $this->produk->TampilProdukAllAdm();
+        }
         return view('produk/index', $data);
     }
     public function create()

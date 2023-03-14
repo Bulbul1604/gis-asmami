@@ -44,4 +44,12 @@ class ProdukModel extends Model
             ->get()
             ->getResultObject();
     }
+    function TampilProdukAllMitra($id)
+    {
+        return $this->db->table('produk')
+            ->join('usaha', 'usaha.id=produk.usaha_id')
+            ->where('usaha.id', $id)
+            ->get()
+            ->getResultObject();
+    }
 }

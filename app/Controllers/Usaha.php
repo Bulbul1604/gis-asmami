@@ -23,7 +23,13 @@ class Usaha extends BaseController
     }
     public function index()
     {
-        $data['usaha'] = $this->usaha->findAll();
+        if (session()->get('akses') == "mitra") {
+            $id = session()->get('usaha_id');
+            $data['usaha'] = $this->usaha->where('id', $id)->find();
+        }
+        if (session()->get('akses') == "admin" or session()->get('akses') == "pimpinan") {
+            $data['usaha'] = $this->usaha->findAll();
+        }
         return view('usaha/index', $data);
     }
     public function show($id)
