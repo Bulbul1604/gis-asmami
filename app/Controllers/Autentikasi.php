@@ -29,6 +29,8 @@ class Autentikasi extends BaseController
                 ])->first();
                 if ($dataUser->akses === 'mitra') {
                     session()->set([
+                        'user_id' => $dataUser->id,
+                        'usaha_id' => $dataUsaha->id,
                         'pemilik_usaha' => $dataUsaha->pemilik_usaha,
                         'nama_usaha' => $dataUsaha->nama_usaha,
                         'name' => $dataUser->name,
@@ -102,6 +104,7 @@ class Autentikasi extends BaseController
         $usaha = new UsahaModel();
         $user->insert([
             'email' => $this->request->getVar('email'),
+            'name' => $this->request->getVar('pemilik_usaha'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
             'akses' => 'mitra',
         ]);

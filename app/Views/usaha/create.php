@@ -2,80 +2,98 @@
 <?= $this->section('title') ?>Tambah Data Usaha<?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <section class="section">
-    <?php if (isset($validation)) : ?>
-        <div class="alert alert-danger alert-dismissible show fade">
-            <?= $validation->listErrors() ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
     <div class="card">
         <div class="card-body">
-            <form class="form form-vertical" method="POST" action="<?= base_url('usaha/create'); ?>">
+            <form class="form form-vertical" method="POST" action="<?= base_url('usaha/save'); ?>">
                 <?= csrf_field(); ?>
                 <div class="form-body">
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="form-label" for="user_id">Pemilik Usaha</label>
-                                <select class="form-select" id="user_id" name="user_id">
+                                <select class="form-select <?= (validation_show_error('user_id')) ? 'is-invalid' : ''; ?>" id="user_id" name="user_id">
                                     <option value="">Pilih salah satu</option>
                                     <?php foreach ($user as $us) : ?>
                                         <option value="<?= $us->id ?>"><?= ucwords($us->id) ?> - <?= ucwords($us->name) ?></option>
                                     <?php endforeach; ?>
                                 </select>
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('user_id'); ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="form-label" for="pemilik_usaha">Nama Lengkap</label>
-                                <input type="text" id="pemilik_usaha" class="form-control" name="pemilik_usaha" />
+                                <input type="text" class="form-control <?= (validation_show_error('pemilik_usaha')) ? 'is-invalid' : ''; ?>" id="pemilik_usaha" name="pemilik_usaha" autofocus value="<?= old('pemilik_usaha'); ?>">
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('pemilik_usaha'); ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="form-label" for="no_wa">Nomor WhatsApp</label>
-                                <input type="number" id="no_wa" class="form-control" name="no_wa" />
+                                <input type="number" class="form-control <?= (validation_show_error('no_wa')) ? 'is-invalid' : ''; ?>" id="no_wa" name="no_wa" autofocus value="<?= old('no_wa'); ?>">
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('no_wa'); ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="form-label" for="nama_usaha">Nama Usaha</label>
-                                <input type="text" id="nama_usaha" class="form-control" name="nama_usaha" />
+                                <input type="text" class="form-control <?= (validation_show_error('nama_usaha')) ? 'is-invalid' : ''; ?>" id="nama_usaha" name="nama_usaha" autofocus value="<?= old('nama_usaha'); ?>">
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('nama_usaha'); ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="form-label" for="alamat">Alamat</label>
-                                <textarea class="form-control" id="alamat" name="alamat" rows="3"></textarea>
+                                <textarea class="form-control <?= (validation_show_error('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" rows="3"></textarea>
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('alamat'); ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="form-label" for="kelurahan">Kelurahan</label>
-                                <select class="form-select" id="kelurahan" name="kelurahan">
+                                <select class="form-select <?= (validation_show_error('kelurahan')) ? 'is-invalid' : ''; ?>" id="kelurahan" name="kelurahan">
                                     <option value="">Pilih salah satu</option>
                                     <?php foreach ($kelurahan as $kel) : ?>
                                         <option value="<?= $kel ?>"><?= ucwords($kel) ?></option>
                                     <?php endforeach; ?>
                                 </select>
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('kelurahan'); ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="form-label" for="kecamatan">Kecamatan</label>
-                                <select class="form-select" id="kecamatan" name="kecamatan">
+                                <select class="form-select <?= (validation_show_error('kecamatan')) ? 'is-invalid' : ''; ?>" id="kecamatan" name="kecamatan">
                                     <option value="">Pilih salah satu</option>
                                     <?php foreach ($kecamatan as $kec) : ?>
                                         <option value="<?= $kec ?>"><?= ucwords($kec) ?></option>
                                     <?php endforeach; ?>
                                 </select>
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('kecamatan'); ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="form-label" for="lang_lat">Koordinat Lokasi</label>
-                                <input type="text" id="lang_lat" class="form-control mb-2" name="lang_lat" readonly style="background-color: #eaeaea;" />
-                                <span class="text-danger text-sm">* Silahkan klik lokasi pada map sesuai dengan lokasi UMKM.</span>
+                                <input type="text" id="lang_lat" class="form-control mb-2 <?= (validation_show_error('lang_lat')) ? 'is-invalid' : ''; ?>" name="lang_lat" readonly style="background-color: #eaeaea;" />
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('lang_lat'); ?>
+                                </div>
+                                <span class="text-mutted text-sm">* Silahkan klik lokasi pada map sesuai dengan lokasi UMKM.</span>
                             </div>
                             <div id="map" class="border rounded mb-3" style="height: 400px"></div>
                         </div>

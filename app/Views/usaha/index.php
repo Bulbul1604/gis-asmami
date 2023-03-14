@@ -9,9 +9,11 @@
         </div>
     <?php endif; ?>
     <div class="card">
-        <div class="card-header d-flex justify-content-end">
-            <a href="<?= base_url('usaha/new') ?>" class="btn btn-sm btn-primary">Tambah Data</a>
-        </div>
+        <?php if (session()->get('akses') != "mitra") : ?>
+            <div class="card-header d-flex justify-content-end">
+                <a href="<?= base_url('usaha/create') ?>" class="btn btn-sm btn-primary">Tambah Data</a>
+            </div>
+        <?php endif; ?>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table" id="table1">
@@ -33,7 +35,7 @@
                                     <a href="<?= base_url('usaha/edit/' . $us->id) ?>" class="btn btn-sm rounded-3 btn-outline-warning">Edit</a>
                                     <a href="<?= base_url('usaha/delete/' . $us->id) ?>" class="btn btn-sm rounded-3 btn-outline-danger" onclick="return confirm('Hapus data ?');">Hapus</a>
                                     <?php if ($us->lang_lat != NULL or $us->lang_lat != "") : ?>
-                                        <a href="<?= base_url('usaha/preview/' . $us->id) ?>" class="btn btn-sm rounded-3 btn-outline-info">Detail</a>
+                                        <a href="<?= base_url('usaha/show/' . $us->id) ?>" class="btn btn-sm rounded-3 btn-outline-info">Detail</a>
                                     <?php endif; ?>
                                 </td>
                             </tr>

@@ -54,33 +54,23 @@ $routes->group('', ['filter' => 'usersAuth'], function ($routes) {
     $routes->get('users/delete/(:segment)', 'Users::delete/$1');
 
     // Data Usaha
-    $routes->get('usaha', 'UsahaController::index');
-    $routes->get('usaha/preview/(:segment)', 'UsahaController::preview/$1');
-    $routes->get('usaha/new', 'UsahaController::new');
-    $routes->post('usaha/create', 'UsahaController::create');
-    $routes->get('usaha/edit/(:segment)', 'UsahaController::edit/$1');
-    $routes->post('usaha/update/(:segment)', 'UsahaController::update/$1');
-    $routes->get('usaha/delete/(:segment)', 'UsahaController::delete/$1');
+    $routes->get('usaha', 'Usaha::index');
+    $routes->get('usaha/show/(:segment)', 'Usaha::show/$1');
+    $routes->get('usaha/create', 'Usaha::create');
+    $routes->post('usaha/save', 'Usaha::save');
+    $routes->get('usaha/edit/(:segment)', 'Usaha::edit/$1');
+    $routes->post('usaha/update/(:segment)', 'Usaha::update/$1');
+    $routes->get('usaha/delete/(:segment)', 'Usaha::delete/$1');
 
     // Data Produk
-    $routes->get('produk', 'ProdukController::index');
-    $routes->get('produk/new', 'ProdukController::new', ['as' => 'produk_new']);
-    $routes->post('produk/create', 'ProdukController::create');
-    $routes->get('produk/edit/(:segment)', 'ProdukController::edit/$1');
-    $routes->post('produk/update/(:segment)', 'ProdukController::update/$1');
-    $routes->get('produk/delete/(:segment)', 'ProdukController::delete/$1');
+    $routes->get('produk', 'Produk::index');
+    $routes->get('produk/create', 'Produk::create');
+    $routes->post('produk/save', 'Produk::save');
+    $routes->get('produk/edit/(:segment)', 'Produk::edit/$1');
+    $routes->post('produk/update/(:segment)', 'Produk::update/$1');
+    $routes->get('produk/delete/(:segment)', 'Produk::delete/$1');
 
     $routes->get('logout', 'Autentikasi::logout');
-
-    // Equivalent to the following:
-    // $routes->get('photos/new', 'Photos::new');
-    // $routes->post('photos', 'Photos::create');
-    // $routes->get('photos', 'Photos::index');
-    // $routes->get('photos/(:segment)', 'Photos::show/$1');
-    // $routes->get('photos/(:segment)/edit', 'Photos::edit/$1');
-    // $routes->put('photos/(:segment)', 'Photos::update/$1');
-    // $routes->patch('photos/(:segment)', 'Photos::update/$1');
-    // $routes->delete('photos/(:segment)', 'Photos::delete/$1');
 });
 
 /*

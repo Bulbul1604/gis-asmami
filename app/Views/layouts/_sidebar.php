@@ -22,12 +22,14 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="<?= base_url('users') ?>" class="sidebar-link">
-                        <i class="bi bi-people-fill"></i>
-                        <span>Data User</span>
-                    </a>
-                </li>
+                <?php if (session()->get('akses') == "admin") : ?>
+                    <li class="sidebar-item">
+                        <a href="<?= base_url('users') ?>" class="sidebar-link">
+                            <i class="bi bi-people-fill"></i>
+                            <span>Data User</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
 
                 <li class="sidebar-item">
                     <a href="<?= base_url('usaha') ?>" class="sidebar-link">
@@ -43,12 +45,14 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-clipboard-fill"></i>
-                        <span>Laporan</span>
-                    </a>
-                </li>
+                <?php if (session()->get('akses') == "admin") : ?>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="bi bi-clipboard-fill"></i>
+                            <span>Laporan</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
 
             </ul>
         </div>
