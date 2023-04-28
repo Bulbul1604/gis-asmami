@@ -39,6 +39,7 @@ class Autentikasi extends BaseController
                     ]);
                 } else {
                     session()->set([
+                        'user_id' => $dataUser->id,
                         'name' => $dataUser->name,
                         'akses' => $dataUser->akses,
                         'logged_in' => TRUE

@@ -152,7 +152,7 @@
     });
     // Map Admin dan Pimpinan
     <?php if (session()->get('akses') == "admin" or session()->get('akses') == "pimpinan") : ?>
-        const iLength = <?= $usahaa ?>;
+        // const iLength = <?= $usahaa ?>;
         <?php foreach ($usaha as $value) : ?>
             L.marker([<?= $value->lang_lat ?>], {
                     icon: icon

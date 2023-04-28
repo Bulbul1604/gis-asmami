@@ -29,6 +29,13 @@
                             <span>Data User</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item">
+                        <a href="<?= base_url('event') ?>" class="sidebar-link">
+                            <i class="bi bi-calendar-event-fill"></i>
+                            <span>Data Event</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
 
                 <?php if (session()->get('akses') == "admin" or session()->get('akses') == "mitra") : ?>

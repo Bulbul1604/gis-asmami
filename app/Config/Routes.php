@@ -53,6 +53,15 @@ $routes->group('', ['filter' => 'usersAuth'], function ($routes) {
     $routes->post('users/update/(:segment)', 'Users::update/$1');
     $routes->get('users/delete/(:segment)', 'Users::delete/$1');
 
+    // Data Event
+    $routes->get('event', 'Event::index');
+    $routes->get('event/show/(:segment)', 'Event::show/$1');
+    $routes->get('event/create', 'Event::create');
+    $routes->post('event/save', 'Event::save');
+    $routes->get('event/edit/(:segment)', 'Event::edit/$1');
+    $routes->post('event/update/(:segment)', 'Event::update/$1');
+    $routes->get('event/delete/(:segment)', 'Event::delete/$1');
+
     // Data Usaha
     $routes->get('usaha', 'Usaha::index');
     $routes->get('usaha/show/(:segment)', 'Usaha::show/$1');
