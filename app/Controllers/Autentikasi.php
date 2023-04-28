@@ -28,15 +28,24 @@ class Autentikasi extends BaseController
                     'user_id' => $dataUser->id,
                 ])->first();
                 if ($dataUser->akses === 'mitra') {
-                    session()->set([
-                        'user_id' => $dataUser->id,
-                        'usaha_id' => $dataUsaha->id,
-                        'pemilik_usaha' => $dataUsaha->pemilik_usaha,
-                        'nama_usaha' => $dataUsaha->nama_usaha,
-                        'name' => $dataUser->name,
-                        'akses' => $dataUser->akses,
-                        'logged_in' => TRUE
-                    ]);
+                    if ($dataUsaha == NULL) {
+                        session()->set([
+                            'user_id' => $dataUser->id,
+                            'name' => $dataUser->name,
+                            'akses' => $dataUser->akses,
+                            'logged_in' => TRUE
+                        ]);
+                    } else {
+                        session()->set([
+                            'user_id' => $dataUser->id,
+                            'usaha_id' => $dataUsaha->id,
+                            'pemilik_usaha' => $dataUsaha->pemilik_usaha,
+                            'nama_usaha' => $dataUsaha->nama_usaha,
+                            'name' => $dataUser->name,
+                            'akses' => $dataUser->akses,
+                            'logged_in' => TRUE
+                        ]);
+                    }
                 } else {
                     session()->set([
                         'user_id' => $dataUser->id,
