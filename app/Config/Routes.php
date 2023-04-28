@@ -32,6 +32,8 @@ $routes->set404Override();
 $routes->get('/', 'Utama::index');
 $routes->get('/detail/(:segment)', 'Utama::detail/$1');
 $routes->get('/list-produk', 'Utama::listProduk');
+$routes->get('/list-event', 'Utama::listEvent');
+$routes->get('/list-event-show/(:segment)', 'Utama::listEventDetail/$1');
 
 $routes->group('', ['filter' => 'auth'], function ($routes) {
     // Autentikasi

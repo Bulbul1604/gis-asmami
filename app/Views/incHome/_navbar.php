@@ -10,7 +10,7 @@
             <a href="#beranda" class="nav-item nav-link">Beranda</a>
             <a href="#produk" class="nav-item nav-link">Produk</a>
             <a href="#peta" class="nav-item nav-link">Peta</a>
-            <a href="" class="nav-item nav-link">Event</a>
+            <a href="<?= site_url(); ?>list-event" class="nav-item nav-link">Event</a>
             <?php if (!session('logged_in')) : ?>
                 <a href="<?= base_url('/login') ?>" class="nav-item nav-link"><span class="bg-outline-primary border-primary text-primary px-3 py-2 rounded-3">Masuk</span></a>
                 <a href="<?= base_url('/register') ?>" class="nav-item nav-link"><span class="bg-primary text-white px-3 py-2 rounded-3">Daftar menjadi Mitra</span></a>

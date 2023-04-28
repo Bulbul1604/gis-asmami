@@ -3,16 +3,18 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\EventModel;
 use App\Models\ProdukModel;
 use App\Models\UsahaModel;
 
 class Utama extends BaseController
 {
-    protected $produk, $usaha;
+    protected $produk, $usaha, $event;
     public function __construct()
     {
         $this->produk = new ProdukModel();
         $this->usaha = new UsahaModel();
+        $this->event = new EventModel();
     }
     public function index()
     {
@@ -34,5 +36,15 @@ class Utama extends BaseController
         // $data['produk'] = $this->produk->findAll();
         $data['produk'] = $this->usaha->TampilProdukAllAdm();
         return view('list-produk', $data);
+    }
+    public function listEvent()
+    {
+        $data['events'] = $this->event->findAll();
+        return view('list-event', $data);
+    }
+    public function listEventDetail($id)
+    {
+        $data['event'] = $this->event->tampilEvent($id);
+        return view('list-event-show', $data);
     }
 }
