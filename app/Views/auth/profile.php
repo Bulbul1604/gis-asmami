@@ -22,12 +22,14 @@
                     </div>
                     <hr />
                     <div class="card-body pt-0 mt-0 text-center">
-                        <h4 class="card-title"><?= ucwords($user->name) ?></h4>
-                        <hr class="p-0 m-0 col-8 mx-auto" />
-                        <p class="card-text pt-1"><?= ucwords($user->nama_usaha) ?></p>
-                        <p class="card-text mb-5"><?= ucwords($user->alamat) ?></p>
-                        <small class="text-muted">Jl. RE Martadinata RT.013</small>
-                        <small class="text-muted">Kel. Loktuan Bontang Utara</small>
+                        <?php if ($user != NULL) : ?>
+                            <h4 class="card-title"><?= ucwords($user->name) ?></h4>
+                            <hr class="p-0 m-0 col-8 mx-auto" />
+                            <p class="card-text pt-1"><?= ucwords($user->nama_usaha) ?></p>
+                            <p class="card-text mb-5"><?= ucwords($user->alamat) ?></p>
+                            <small class="text-muted">Jl. RE Martadinata RT.013</small>
+                            <small class="text-muted">Kel. Loktuan Bontang Utara</small>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
