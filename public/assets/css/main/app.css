@@ -710,10 +710,10 @@ tr {
     border-color: inherit;
 }
 label {
-    /* display: inline-block; */
-    display: flex;
+    display: inline-block;
+    /* display: flex;
     gap: 10px;
-    align-items: center;
+    align-items: center; */
 }
 button {
     border-radius: 0;
