@@ -115,7 +115,6 @@
             ]
          }).addTo(map);
       }
-
       // let icon = L.icon({
       //    iconUrl: '<?= base_url('/icon.png') ?>',
       // });

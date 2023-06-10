@@ -54,6 +54,17 @@
                                 <i class="bi bi-briefcase"></i>
                             </div>
                         </div>
+                        <div class="form-group position-relative has-icon-left mb-3">
+                            <!-- <input type="text" name="kategori_usaha" class="form-control form-control-lg rounded-3 border-0 shadow-sm" required placeholder="Kategori Usaha" /> -->
+                            <select name="kategori_usaha" class="form-control form-control-lg rounded-3 border-0 shadow-sm">
+                                <option value="makanan">Makanan</option>
+                                <option value="minuman">Minuman</option>
+                                <option value="makanan/minuman">Makanan/ Minuman</option>
+                            </select>
+                            <div class="form-control-icon">
+                                <i class="bi bi-tags"></i>
+                            </div>
+                        </div>
                         <button class="btn btn-primary btn-block shadow-sm mt-2">
                             Register
                         </button>

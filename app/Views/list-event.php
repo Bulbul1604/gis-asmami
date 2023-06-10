@@ -41,36 +41,26 @@
 
     <div class="container">
         <section class="section mt-5">
-            <div class="card">
-                <div class="card-body">
-                    <table id="example" class="display" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Gambar</th>
-                                <th>Judul</th>
-                                <th>Tgl Acara</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($events as $event) : ?>
-                                <tr>
-                                    <td>
-                                        <a href="<?= base_url('uploads/event/' . $event->gambar); ?>" target="_blank" rel="noopener noreferrer">
-                                            <img src="<?= base_url('uploads/event/' . $event->gambar); ?>" alt="<?= $event->gambar ?>" width="30" height="30" class="object-fit-cover" />
-                                        </a>
-                                    </td>
-                                    <td><?= ucwords($event->judul) ?></td>
-                                    <td><?= date("d F Y", strtotime($event->tgl_buat)) ?></td>
-                                    <td class="d-flex gap-2">
-                                        <a href="<?= base_url('list-event-show/' . $event->id) ?>" class="btn btn-sm rounded-3 btn-outline-info">Detail</a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+            <?php foreach ($events as $event) : ?>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="<?= base_url('uploads/event/' . $event->gambar); ?>" class="card-img" alt="..." style="height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="col">
+                                <div class="card-body">
+                                    <small class="text-body-secondary"><?= date("d F Y", strtotime($event->tgl_buat)) ?></small>
+                                    <h5 class="card-title mt-2"><?= ucwords($event->judul) ?></h5>
+                                    <div class="text-end">
+                                        <a href="<?= base_url('list-event-show/' . $event->id) ?>" class="btn btn-sm btn-primary"><small>Detail event</small></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </section>
     </div>
 

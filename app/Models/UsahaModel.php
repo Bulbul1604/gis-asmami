@@ -10,7 +10,7 @@ class UsahaModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
-    protected $allowedFields    = ['user_id', 'pemilik_usaha', 'no_wa', 'nama_usaha', 'alamat', 'kecamatan', 'kelurahan', 'lang_lat'];
+    protected $allowedFields    = ['user_id', 'pemilik_usaha', 'no_wa', 'nama_usaha', 'kategori_usaha', 'alamat', 'kecamatan', 'kelurahan', 'lang_lat'];
 
     function TampilUsaha($id)
     {

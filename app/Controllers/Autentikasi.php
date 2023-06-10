@@ -123,6 +123,7 @@ class Autentikasi extends BaseController
             'pemilik_usaha' => $this->request->getVar('pemilik_usaha'),
             'no_wa' => $this->request->getVar('no_wa'),
             'nama_usaha' => $this->request->getVar('nama_usaha'),
+            'kategori_usaha' => $this->request->getVar('kategori_usaha'),
         ]);
         session()->setFlashdata('success', 'Sukses');
         return redirect()->to('/login');

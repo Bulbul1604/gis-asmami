@@ -35,6 +35,12 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<link rel="stylesheet" href="<?= site_url(); ?>src/leaflet.legend.css" />
+<script type="text/javascript" src="<?= site_url(); ?>src/leaflet.legend.js"></script>
+<link rel="stylesheet" href="<?= site_url(); ?>src/leaflet-compass.css" />
+<script type="text/javascript" src="<?= site_url(); ?>src/leaflet-compass.js"></script>
+<link rel="stylesheet" href="<?= site_url(); ?>src/leaflet-search.css" />
+<script type="text/javascript" src="<?= site_url(); ?>src/leaflet-search.js"></script>
 
 <!-- BoxIcon -->
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
