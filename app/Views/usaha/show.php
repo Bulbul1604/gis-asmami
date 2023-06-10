@@ -52,14 +52,30 @@
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    let icon = L.icon({
-        iconUrl: '<?= base_url('/icon.png') ?>',
+    let makan = L.icon({
+        iconUrl: '<?= base_url('src/marker/makan.png') ?>',
+        iconSize: [24, 24],
+    });
+    let minum = L.icon({
+        iconUrl: '<?= base_url('src/marker/minum.png') ?>',
+        iconSize: [24, 24],
+    });
+    let makanminum = L.icon({
+        iconUrl: '<?= base_url('src/marker/makanminum.png') ?>',
+        iconSize: [24, 24],
     });
     let marker = L.marker([
-        <?= $usaha->lang_lat ?>
-    ], {
-        icon: icon
-    }).addTo(map);
-    marker.bindPopup("<h6><?= ucwords($usaha->nama_usaha) ?></h6").openPopup();
+            <?= $usaha->lang_lat ?>
+        ], <?php if ($usaha->kategori_usaha == 'makanan') : ?> {
+                icon: makan
+            }
+        <?php elseif ($usaha->kategori_usaha == 'minuman') : ?> {
+                icon: minum
+            }
+        <?php elseif ($usaha->kategori_usaha == 'makanan/minuman') : ?> {
+                icon: makanminum
+            }
+        <?php endif; ?>).addTo(map);
+    // marker.bindPopup("<h6><?= ucwords($usaha->nama_usaha) ?></h6").openPopup();
 </script>
 <?= $this->endSection() ?>
