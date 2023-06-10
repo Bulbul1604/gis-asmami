@@ -14,6 +14,7 @@
                  "id": [<?= $value->id ?>],
                  "loc": [<?= $value->lang_lat ?>],
                  "title": "<?= $value->nama_usaha ?>",
+                 "kategori_usaha": "<?= $value->kategori_usaha ?>",
                  "alamat": "<?= $value->alamat ?>",
                  "kelurahan": "<?= $value->kelurahan ?>",
                  "kecamatan": "<?= $value->kecamatan ?>",
@@ -116,21 +117,21 @@
              alamat = data[i].alamat, //position found
              kelurahan = data[i].kelurahan, //position found
              kecamatan = data[i].kecamatan, //position found
-             marker = new L.Marker(new L.latLng(loc),
-                 <?php if ($value->kategori_usaha == 'makanan') : ?> {
-                         title: title,
-                         icon: makan
-                     }
-                 <?php elseif ($value->kategori_usaha == 'minuman') : ?> {
-                         title: title,
-                         icon: minum
-                     }
-                 <?php elseif ($value->kategori_usaha == 'makanan/minuman') : ?> {
-                         title: title,
-                         icon: makanminum
-                     }
-                 <?php endif; ?>
-             ); //se property searched
+             kategori_usaha = data[i].kategori_usaha; //position found
+         if (kategori_usaha == 'makanan') {
+             CustomTitle = title;
+             CustomIcon = makan;
+         } else if (kategori_usaha == 'minuman') {
+             CustomTitle = title;
+             CustomIcon = minum;
+         } else if (kategori_usaha == 'makanan/minuman') {
+             CustomTitle = title;
+             CustomIcon = makanminum;
+         }
+         marker = new L.Marker(new L.latLng(loc), {
+             title: CustomTitle,
+             icon: CustomIcon,
+         }); //se property searched
          marker.bindPopup(`<h6 style='letter-spacing: 1px;'>${title}</h6><span>${alamat} - ${kelurahan} - ${kecamatan}</span><br /><br /><a href='<?= base_url() ?>detail/${id}' class='text-primary'>Detail UMKM</a>`);
          //  marker.bindPopup('title: ' + title);
          markersLayer.addLayer(marker);
