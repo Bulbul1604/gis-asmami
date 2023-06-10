@@ -43,7 +43,8 @@
             <th width="20%" style="height: 20px;"><strong>Pemilik Usaha</strong></th>
             <th width="40%" style="height: 20px;"><strong>Alamat</strong></th>
             <th width="17%" style="height: 20px;"><strong>Nama Usaha</strong></th>
-            <th width="17%" style="height: 20px;"><strong>Produk</strong></th>
+            <th width="17%" style="height: 20px;"><strong>Kategori Usaha</strong></th>
+            <th width="17%" style="height: 20px;"><strong>No. Hp</strong></th>
         </tr>
         <?php $no = 1; ?>
         <?php foreach ($laporan as $lap) : ?>
@@ -52,7 +53,8 @@
                 <td style="height: 20px;"><?= ucwords($lap->pemilik_usaha); ?></td>
                 <td style="height: 20px;"><?= ucwords($lap->alamat) ?>, <?= ucwords($lap->kelurahan) ?>, <?= ucwords($lap->kecamatan) ?>, Kota Bontang.</td>
                 <td style="height: 20px;"><?= ucwords($lap->nama_usaha); ?></td>
-                <td style="height: 20px;"><?= ucwords($lap->nama_produk); ?></td>
+                <td style="height: 20px;"><?= ucwords($lap->kategori_usaha); ?></td>
+                <td style="height: 20px;"><?= ucwords($lap->no_wa); ?></td>
             </tr>
             <?php $no++; ?>
         <?php endforeach; ?>
