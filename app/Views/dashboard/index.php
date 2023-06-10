@@ -147,16 +147,33 @@
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-    let icon = L.icon({
-        iconUrl: '<?= base_url('/icon.png') ?>',
+    let makan = L.icon({
+        iconUrl: '<?= base_url('src/marker/makan.png') ?>',
+        iconSize: [24, 24],
+    });
+    let minum = L.icon({
+        iconUrl: '<?= base_url('src/marker/minum.png') ?>',
+        iconSize: [24, 24],
+    });
+    let makanminum = L.icon({
+        iconUrl: '<?= base_url('src/marker/makanminum.png') ?>',
+        iconSize: [24, 24],
     });
     // Map Admin dan Pimpinan
     <?php if (session()->get('akses') == "admin" or session()->get('akses') == "pimpinan") : ?>
         // const iLength = <?= $usahaa ?>;
         <?php foreach ($usaha as $value) : ?>
-            L.marker([<?= $value->lang_lat ?>], {
-                    icon: icon
-                })
+            L.marker([<?= $value->lang_lat ?>],
+                    <?php if ($usaha->kategori_usaha == 'makanan') : ?> {
+                            icon: makan
+                        }
+                    <?php elseif ($usaha->kategori_usaha == 'minuman') : ?> {
+                            icon: minum
+                        }
+                    <?php elseif ($usaha->kategori_usaha == 'makanan/minuman') : ?> {
+                            icon: makanminum
+                        }
+                    <?php endif; ?>)
                 .bindPopup("<h6><?= ucwords($value->nama_usaha) ?></h6><br /><a href='<?= base_url('usaha/show/' . $value->id) ?>' class='btn btn-sm btn-primary text-white px-4'>Detail</a>").
             addTo(map);
         <?php endforeach; ?>
