@@ -8,8 +8,8 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-4 py-lg-0 d-flex align-items-center">
             <a href="#beranda" class="nav-item nav-link">Beranda</a>
-            <a href="#produk" class="nav-item nav-link">Produk</a>
             <a href="#peta" class="nav-item nav-link">Peta</a>
+            <a href="#produk" class="nav-item nav-link">Produk</a>
             <a href="<?= site_url(); ?>list-event" class="nav-item nav-link">Event</a>
             <?php if (!session('logged_in')) : ?>
                 <a href="<?= base_url('/login') ?>" class="nav-item nav-link"><span class="bg-outline-primary border-primary text-primary px-3 py-2 rounded-3">Masuk</span></a>
