@@ -30,7 +30,7 @@ class Laporan extends BaseController
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();
         // load HTML content
-        $data['laporan'] = $this->usaha->TampilProdukAllAdm();
+        $data['laporan'] = $this->usaha->findAll();
         $dompdf->loadHtml(view('laporan/print', $data));
         // (optional) setup the paper size and orientation
         $dompdf->setPaper('A4', 'landscape');
