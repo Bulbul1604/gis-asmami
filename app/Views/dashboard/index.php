@@ -164,13 +164,13 @@
         // const iLength = <?= $usahaa ?>;
         <?php foreach ($usaha as $value) : ?>
             L.marker([<?= $value->lang_lat ?>],
-                    <?php if ($usaha->kategori_usaha == 'makanan') : ?> {
+                    <?php if ($value->kategori_usaha == 'makanan') : ?> {
                             icon: makan
                         }
-                    <?php elseif ($usaha->kategori_usaha == 'minuman') : ?> {
+                    <?php elseif ($value->kategori_usaha == 'minuman') : ?> {
                             icon: minum
                         }
-                    <?php elseif ($usaha->kategori_usaha == 'makanan/minuman') : ?> {
+                    <?php elseif ($value->kategori_usaha == 'makanan/minuman') : ?> {
                             icon: makanminum
                         }
                     <?php endif; ?>)
