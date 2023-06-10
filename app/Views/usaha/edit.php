@@ -80,7 +80,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="form-label" for="lang_lat">Koordinat Lokasi</label>
-                                <input type="text" id="lang_lat" class="form-control <?= (validation_show_error('lang_lat')) ? 'is-invalid' : ''; ?> mb-2" name="lang_lat" readonly value="<?= old('lang_lat') ? old('lang_lat') : $usaha->lang_lat; ?>" style="background-color: #eaeaea;" />
+                                <input type="text" id="lang_lat" class="form-control <?= (validation_show_error('lang_lat')) ? 'is-invalid' : ''; ?> mb-2" name="lang_lat" value="<?= old('lang_lat') ? old('lang_lat') : $usaha->lang_lat; ?>" />
                                 <div class="invalid-feedback">
                                     <?= validation_show_error('lang_lat'); ?>
                                 </div>
