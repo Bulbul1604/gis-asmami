@@ -137,6 +137,46 @@ class Autentikasi extends BaseController
         return view('auth/profile', $data);
     }
 
+    public function changePassword()
+    {
+        $user = new UserModel();
+        $id = session()->get('user_id');
+        $data['user'] = $user->where('user.id', $id)->first();
+        return view('auth/change-password', $data);
+    }
+
+    public function changePasswordPost($id)
+    {
+        if (!$this->validate([
+            'password' => [
+                'rules' => 'required|min_length[4]',
+                'errors' => [
+                    'required' => 'Password Harus diisi',
+                    'min_length' => '{field} Minimal 4 Karakter',
+                ]
+            ],
+            'password_conf' => [
+                'rules' => 'required|matches[password]',
+                'errors' => [
+                    'required' => 'Password Harus diisi',
+                    'matches' => 'Konfirmasi Password Tidak Sesuai Dengan Password!',
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('errors', $this->validator->listErrors());
+            return redirect()->back()->withInput();
+        }
+        $user = new UserModel();
+        $user->update($id, [
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+        ]);
+        // $data->update($id, [
+        //     'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+        // ]);
+        session()->setFlashdata('message', 'Password Berhasil Dirubah');
+        return redirect()->to('/change-password');
+    }
+
     function logout()
     {
         session()->destroy();

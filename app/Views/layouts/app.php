@@ -41,6 +41,9 @@
                                         </li>
                                     <?php endif; ?>
                                     <li>
+                                        <a class="dropdown-item" href="<?= base_url('change-password') ?>"><i class="icon-mid bi bi-key me-2"></i> Change Password</a>
+                                    </li>
+                                    <li>
                                         <hr class="dropdown-divider" />
                                     </li>
                                     <li>

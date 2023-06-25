@@ -55,9 +55,13 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="form-label" for="harga">Harga</label>
-                                <input type="number" id="harga" class="form-control <?= (validation_show_error('harga')) ? 'is-invalid' : ''; ?>" id="harga" name="harga" autofocus value="<?= old('harga') ? old('harga') : $produk->harga; ?>">
-                                <div class="invalid-feedback">
-                                    <?= validation_show_error('harga'); ?>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Rp</span>
+                                    <input type="number" id="harga" class="form-control <?= (validation_show_error('harga')) ? 'is-invalid' : ''; ?>" id="harga" name="harga" autofocus value="<?= old('harga') ? old('harga') : $produk->harga; ?>">
+                                    <span class="input-group-text">.000</span>
+                                    <div class="invalid-feedback">
+                                        <?= validation_show_error('harga'); ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -87,6 +87,8 @@ $routes->group('', ['filter' => 'usersAuth'], function ($routes) {
 
     // Profile
     $routes->get('profile', 'Autentikasi::profile');
+    $routes->get('change-password', 'Autentikasi::changePassword');
+    $routes->post('change-password/(:segment)', 'Autentikasi::changePasswordPost/$1');
 
     $routes->get('logout', 'Autentikasi::logout');
 });
